@@ -1,9 +1,6 @@
 services:
   - type: web
-    name: project-vn-api
-    runtime: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: python -m app
-    envVars:
-      - key: PYTHON_VERSION
-        value: 3.10
+    name: project-vn
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn app.__main__:app"
