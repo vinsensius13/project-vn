@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: project-vn-api
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python -m app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10
