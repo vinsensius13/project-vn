@@ -1,0 +1,17 @@
+### Translate ID to JP (dengan refine)
+POST http://localhost:8080/translate
+Content-Type: application/json
+
+{
+  "text": "Selamat pagi, saya ingin pergi ke kamar mandi. Tolong tunjukkan jalan.",
+  "target": "ja"
+}
+
+### Translate JP to ID
+POST http://localhost:8080/translate
+Content-Type: application/json
+
+{
+  "text": "今日は仕事が忙しくて、夜遅くまで働かなければならない。",
+  "target": "id"
+}
