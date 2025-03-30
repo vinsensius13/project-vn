@@ -1,17 +1,25 @@
 import MeCab
 
 wakati = MeCab.Tagger("-Owakati")
-grammar = MeCab.Tagger("")
+mecab = MeCab.Tagger("-Ochasen")
 
 def tokenize_text(text):
+    """
+    Tokenisasi kalimat Jepang → list kata.
+    """
     return wakati.parse(text).strip().split()
 
 def analyze_grammar(text):
-    result = []
-    parsed = grammar.parse(text)
-    for line in parsed.split("\n"):
-        if "\t" in line:
-            word, details = line.split("\t")
-            pos = details.split(",")[0]
-            result.append(f"{word} ({pos})")
-    return result
+    """
+    Analisis grammar dengan MeCab.
+    Output: list format "kata (POS)"
+    """
+    parsed_result = []
+    node = mecab.parseToNode(text)
+    while node:
+        surface = node.surface
+        features = node.feature.split(",")
+        pos = features[0] if features else "Unknown"
+        parsed_result.append(f"{surface} ({pos})")
+        node = node.next
+    return parsed_result 

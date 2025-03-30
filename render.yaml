@@ -1,6 +1,6 @@
 services:
   - type: web
     name: project-vn
-    env: python
+    runtime: python
     buildCommand: "pip install -r requirements.txt"
     startCommand: "gunicorn app.__main__:app"

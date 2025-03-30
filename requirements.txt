@@ -4,3 +4,4 @@ transformers
 torch
 mecab-python3
 requests
+gunicorn
